@@ -1,0 +1,32 @@
+<%- include("_header") -%>
+
+<h1>List of job openings (<%= model.length %>)</h1>
+
+<div class="table-responsive-sm">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Comment</th>
+        <th>Author</th>
+        <th>Comment</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (const job of model) { %>
+      <tr>
+        <td><%= job.job_id %></td>
+        <td><%= job.company_id %></td>
+        <td><%= job.position %></td>
+        <td><%= job.compensation %></td>
+        <td><%= job.job_description %></td>
+        <td><%= job.tech %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include("_footer") -%>
