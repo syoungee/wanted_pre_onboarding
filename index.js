@@ -85,7 +85,7 @@ app.get("/edit/:id", (req, res) => {
 
 app.post("/edit/:id", (req, res) => {
   const job_id = req.params.id;
-  const jobs = [req.body.position, req.body.compensation, req.body.jd, req.body.tech, job_id];
+  const jobs = [req.body.position, req.body.compensation, req.body.job_description, req.body.tech, job_id];
   const sql = "UPDATE job_opening SET position=?, compensation=?, job_description=?, tech=? WHERE job_id=?";
   db.run(sql, jobs, (err) => {
     if (err) {
