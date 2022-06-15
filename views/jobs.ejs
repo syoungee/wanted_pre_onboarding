@@ -1,28 +1,40 @@
 <%- include("_header") -%>
+<meta name="referrer" content="no-referrer-when-downgrade" />
 
-<h1>List of job openings (<%= model.length %>)</h1>
+<h1>List of Job Openings<span style="color:pink">(<%= model.length %>)</span></h1>
 
 <div class="table-responsive-sm">
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>공고_id</th>
-        <th>회사_id</th>
+        <th> no.</th>
+        <th>회사이름</th>
+        <th>국가</th>
+        <th>지역</th>
         <th>채용포지션</th>
         <th>채용보상금</th>
         <th>채용내용</th>
         <th>사용기술</th>
+        <th class="d-print-none">
+          <a class="btn btn-sm btn-success" href="/">Add</a>
+        </th>
       </tr>
     </thead>
     <tbody>
       <% for (const job of model) { %>
       <tr>
         <td><%= job.job_id %></td>
-        <td><%= job.company_id %></td>
+        <td><%= job.company_name %></td>
+        <td><%= job.country %></td>
+        <td><%= job.location %></td>
         <td><%= job.position %></td>
         <td><%= job.compensation %></td>
         <td><%= job.job_description %></td>
         <td><%= job.tech %></td>
+        <td class="d-print-none">
+          <a class="btn btn-sm btn-warning" href="/edit/<%= job.job_id %>">Edit</a>
+          <a class="btn btn-sm btn-danger" href="/">Delete</a>
+        </td>
       </tr>
       <% } %>
     </tbody>

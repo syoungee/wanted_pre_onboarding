@@ -58,12 +58,38 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/jobs", (req, res) => {
-  const sql = "SELECT * FROM job_opening ORDER BY company_id";
+  const sql = `
+  SELECT *
+  FROM job_opening, company
+  WHERE job_opening.company_id = company.company_id`;
 
   db.all(sql, [], (err, rows) => {
     if (err) {
       return console.error(err.message);
     }
     res.render("jobs", { model: rows });
+  });
+});
+
+app.get("/edit/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "SELECT * FROM JOB_OPENING WHERE JOB_ID=?";
+  db.get(sql, id, (err, row) => {
+    if (err) {
+      console.error(err.message);
+    }
+    res.render("edit", { model: row });
+  });
+});
+
+app.post("/edit/:id", (req, res) => {
+  const job_id = req.params.id;
+  const jobs = [req.body.position, req.body.compensation, req.body.jd, req.body.tech, job_id];
+  const sql = "UPDATE job_opening SET position=?, compensation=?, job_description=?, tech=? WHERE job_id=?";
+  db.run(sql, jobs, (err) => {
+    if (err) {
+      console.error(err.message);
+    }
+    res.redirect("/jobs");
   });
 });
