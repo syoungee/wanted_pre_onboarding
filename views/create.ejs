@@ -1,0 +1,26 @@
+<%- include("_header") %>
+
+<h1>새로운 공고 등록</h1>
+<form action="/create" method="post">
+  <div class="form-horizontal">
+
+    <div class="form-group row">
+      <label class="col-form-label col-sm-2" for="company_id">회사 id</label>
+      <div class="col-sm-8">
+        <input autofocus class="form-control" name="company_id" value="<%= model.company_id %>">
+      </div>
+    </div>
+
+    <%- include("_editor") %>
+
+    <div class="form-group row">
+      <label class="col-form-label col-sm-2"></label>
+      <div class="col-sm-10">
+        <input type="submit" value="Save" class="btn btn-default btn-success">
+        <a href="/jobs" class="btn btn-outline-dark cancel">Cancel</a>
+      </div>
+    </div>
+  </div>
+</form>
+
+<%- include("_footer") %>

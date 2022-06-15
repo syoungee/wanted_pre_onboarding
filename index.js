@@ -24,18 +24,17 @@ db.run(sql_create, (err) => {
   console.log("Successful created job_opening table!");
 });
 
-/*
   const sql_insert = `INSERT INTO job_opening (job_id, company_id, position, compensation, job_description, tech) VALUES
   (1, 1, '백엔드 주니어 개발자',  1000000, '원티드랩에서 백엔드 주니어 개발자를 채용합니다. 조건은..', 'Python'),
-  (2, 1, '프론트엔드 주니어 개발자',  9000000, '원티드랩에서 프론트엔드 주니어 개발자를 채용합니다. 조건은..', 'JavaScript');`;
+  (2, 2, '프론트엔드 주니어 개발자',  9000000, '원티드랩에서 프론트엔드 주니어 개발자를 채용합니다. 조건은..', 'JavaScript'),
+  (3, 3, '데브옵스 시니어 개발자',  9000000, '원티드랩에서 데브옵스 시니어 개발자를 채용합니다. 조건은..', 'Docker');`;
 
   db.run(sql_insert, (err) => {
     if (err) {
       return console.error(err.message);
     }
-    console.log("Successful created 2 Job Descriptions!");
-  }); 
-*/
+    console.log("Successful created 3 Job Descriptions!");
+  });
 
 var app = express(); // Express server의 시작
 var port = process.env.PORT || 8080;
@@ -57,6 +56,7 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
+// JOB OPENING PAGE
 app.get("/jobs", (req, res) => {
   const sql = `
   SELECT *
@@ -71,6 +71,7 @@ app.get("/jobs", (req, res) => {
   });
 });
 
+// EDIT JOB OPENING
 app.get("/edit/:id", (req, res) => {
   const id = req.params.id;
   const sql = "SELECT * FROM JOB_OPENING WHERE JOB_ID=?";
@@ -94,7 +95,24 @@ app.post("/edit/:id", (req, res) => {
   });
 });
 
+// CREATE
+app.get("/create", (req, res) => {
+  res.render("create", { model: {} });
+});
 
+app.post("/create", (req, res) => {
+  const jobs = [req.body.company_id, req.body.position, req.body.compensation, req.body.job_description, req.body.tech];
+  const sql = "INSERT INTO job_opening (company_id, position, compensation, job_description, tech) VALUES (?, ?, ?, ?, ?)";
+  db.run(sql, jobs, (err) => {
+    if (err) {
+      console.error(err.message);
+    }
+    res.redirect("/jobs");
+  });
+});
+
+
+// DELETE 
 app.get("/delete/:id", (req, res) => {
   const job_id = req.params.id;
   const sql = "SELECT * FROM job_opening WHERE job_id=?";
@@ -116,4 +134,3 @@ app.post("/delete/:id", (req, res) => {
     res.redirect("/jobs");
   });
 });
-
