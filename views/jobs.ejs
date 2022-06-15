@@ -33,7 +33,7 @@
         <td><%= job.tech %></td>
         <td class="d-print-none">
           <a class="btn btn-sm btn-warning" href="/edit/<%= job.job_id %>">Edit</a>
-          <a class="btn btn-sm btn-danger" href="/">Delete</a>
+          <a class="btn btn-sm btn-danger" href="/delete/<%= job.job_id %>">Delete</a>
         </td>
       </tr>
       <% } %>

@@ -93,3 +93,27 @@ app.post("/edit/:id", (req, res) => {
     res.redirect("/jobs");
   });
 });
+
+
+app.get("/delete/:id", (req, res) => {
+  const job_id = req.params.id;
+  const sql = "SELECT * FROM job_opening WHERE job_id=?";
+  db.get(sql, job_id, (err, row) => {
+    if (err) {
+      console.error(err.message);
+    }
+    res.render("delete", { model: row });
+  });
+});
+
+app.post("/delete/:id", (req, res) => {
+  const job_id = req.params.id;
+  const sql = "DELETE FROM job_opening WHERE job_id=?";
+  db.run(sql, job_id, (err) => {
+    if (err) {
+      console.error(err.message);
+    }
+    res.redirect("/jobs");
+  });
+});
+
