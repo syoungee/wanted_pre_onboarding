@@ -71,6 +71,24 @@ app.get("/jobs", (req, res) => {
   });
 });
 
+// JOB SEARCH
+app.get("/search", (req, res) => {
+  const searchInput = req.query.searchInput;
+  const sql = `SELECT *
+  FROM job_opening, company
+  WHERE job_opening.company_id = company.company_id
+  AND company.company_name = ?`;
+
+  db.all(sql, searchInput, (err, row) => {
+    if (err) {
+      console.error(err.message);
+    }
+    console.log(searchInput);
+    console.log(row);
+    res.render("search", { model: row });
+  });
+})
+
 // EDIT JOB OPENING
 app.get("/edit/:id", (req, res) => {
   const id = req.params.id;
