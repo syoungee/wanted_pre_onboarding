@@ -1,7 +1,7 @@
 <%- include("_header") -%>
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-<h1>List of Job Openings<span style="color:pink">(<%= model.length %>)</span></h1>
+<h1>List of Searched Job Openings<span style="color:pink">(<%= model.length %>)</span></h1>
 
 <div class="table-responsive-sm">
   <table class="table table-hover">
@@ -15,9 +15,6 @@
         <th>채용보상금</th>
         <th>채용내용</th>
         <th>사용기술</th>
-        <th class="d-print-none">
-          <a class="btn btn-sm btn-success" href="/create">Add</a>
-        </th>
       </tr>
     </thead>
     <tbody>
@@ -31,10 +28,6 @@
         <td><%= job.compensation %></td>
         <td><%= job.job_description %></td>
         <td><%= job.tech %></td>
-        <td class="d-print-none">
-          <a class="btn btn-sm btn-warning" href="/edit/<%= job.job_id %>">Edit</a>
-          <a class="btn btn-sm btn-danger" href="/delete/<%= job.job_id %>">Delete</a>
-        </td>
       </tr>
       <% } %>
     </tbody>
@@ -42,14 +35,9 @@
 </div>
 <div id="overDiv">
   <div id="searchArea" class="main" style="padding: 20px">
-    <form action="/search" method="get">
       <div id="overSearch">
-          <div style="float: left; margin-right: 10px">
-            <input id="searchInput" name="searchInput" class="form-control" type="text" placeholder="search the job openings">
-          </div>
-          <button id="btnSearch" type="submit" class="btn btn-danger">Search</button>
+          <a class="btn btn-success" href="/jobs">Return</a>
       </div>
-    </form>
   </div>
 
   <div id="txtCurrentSearch" class="main"></div>
