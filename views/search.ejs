@@ -1,48 +1,64 @@
 <%- include("_header") -%>
-<meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
 
-<h1>List of Searched Job Openings<span style="color:pink">(<%= model.length %>)</span></h1>
+    <h1>List of Searched Job Openings<span style="color:pink">(<%= model.length %>)</span></h1>
 
-<div class="table-responsive-sm">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th> no.</th>
-        <th>회사이름</th>
-        <th>국가</th>
-        <th>지역</th>
-        <th>채용포지션</th>
-        <th>채용보상금</th>
-        <th>채용내용</th>
-        <th>사용기술</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for (const job of model) { %>
-      <tr>
-        <td><%= job.job_id %></td>
-        <td><%= job.company_name %></td>
-        <td><%= job.country %></td>
-        <td><%= job.location %></td>
-        <td><%= job.position %></td>
-        <td><%= job.compensation %></td>
-        <td><%= job.job_description %></td>
-        <td><%= job.tech %></td>
-      </tr>
-      <% } %>
-    </tbody>
-  </table>
-</div>
-<div id="overDiv">
-  <div id="searchArea" class="main" style="padding: 20px">
-      <div id="overSearch">
-          <a class="btn btn-success" href="/jobs">Return</a>
-      </div>
-  </div>
+    <div class="table-responsive-sm">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th style="padding: 0.5rem"> no.</th>
+                    <th style="padding: 0.5rem">회사이름</th>
+                    <th style="padding: 0.5rem">국가</th>
+                    <th style="padding: 0.5rem">지역</th>
+                    <th style="padding: 0.5rem">채용포지션</th>
+                    <th style="padding: 0.5rem">채용보상금</th>
+                    <th style="padding: 0.5rem">채용내용</th>
+                    <th style="padding: 0.5rem">사용기술</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (const job of model) { %>
+                    <tr>
+                        <td>
+                            <%= job.job_id %>
+                        </td>
+                        <td>
+                            <%= job.company_name %>
+                        </td>
+                        <td>
+                            <%= job.country %>
+                        </td>
+                        <td>
+                            <%= job.location %>
+                        </td>
+                        <td>
+                            <%= job.position %>
+                        </td>
+                        <td>
+                            <%= job.compensation %>
+                        </td>
+                        <td>
+                            <%= job.job_description %>
+                        </td>
+                        <td>
+                            <%= job.tech %>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+    <div id="overDiv">
+        <div id="searchArea" class="main" style="padding: 20px">
+            <div id="overSearch">
+                <a class="btn btn-success" href="/jobs">Return</a>
+            </div>
+        </div>
 
-  <div id="txtCurrentSearch" class="main"></div>
-  <div id="main" class="main">
-  </div>
-</div>
+        <div id="txtCurrentSearch" class="main"></div>
+        <div id="main" class="main">
+        </div>
+    </div>
 
-<%- include("_footer") -%>
+    <%- include("_footer") -%>

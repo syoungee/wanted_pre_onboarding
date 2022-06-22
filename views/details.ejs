@@ -1,7 +1,11 @@
 <%- include("_header") -%>
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
-    <h1>List of Job Openings<span style="color:pink">(<%= model.length %>)</span></h1>
+    <h1>
+        <sapn style="color:skyblue">
+            <%= model[0].company_name %>
+        </sapn>&#39;s Job Openings
+    </h1>
 
     <div class="table-responsive-sm">
         <table class="table table-hover">
@@ -15,9 +19,6 @@
                     <th style="padding: 0.5rem">채용보상금</th>
                     <th style="padding: 0.5rem">채용내용</th>
                     <th style="padding: 0.5rem">사용기술</th>
-                    <th style="padding: 0.5rem" class="d-print-none">
-                        <a class="btn btn-sm btn-success" href="/create">Add</a>
-                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -47,11 +48,6 @@
                         <td>
                             <%= job.tech %>
                         </td>
-                        <td class="d-print-none" style="width: 13px;">
-                            <a class="btn btn-sm btn-warning" href="/edit/<%= job.job_id %>">Edit</a>
-                            <a class="btn btn-sm btn-danger" href="/delete/<%= job.job_id %>">Delete</a>
-                            <a class="btn btn-sm btn-success" href="/details/<%= job.company_id %>">Details</a>
-                        </td>
                     </tr>
                     <% } %>
             </tbody>
@@ -59,16 +55,10 @@
     </div>
     <div id="overDiv">
         <div id="searchArea" class="main" style="padding: 20px">
-            <form action="/search" method="get">
-                <div id="overSearch">
-                    <div style="float: left; margin-right: 10px">
-                        <input id="searchInput" name="searchInput" class="form-control" type="text" placeholder="search company name" autofocus>
-                    </div>
-                    <button id="btnSearch" type="submit" class="btn btn-danger">Search</button>
-                </div>
-            </form>
+            <div id="overSearch">
+                <a class="btn btn-success" href="/jobs">Return</a>
+            </div>
         </div>
-
         <div id="txtCurrentSearch" class="main"></div>
         <div id="main" class="main">
         </div>
