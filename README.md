@@ -26,5 +26,17 @@
 >Note: 22.06.15 (**4-1)까지 완료**)   
 
   **4-2)검색 창에 회사 이름 검색 시 검색된 항목들을 띄워줍니다.**
+  <img width="980" alt="스크린샷 2022-06-22 오후 4 06 56" src="https://user-images.githubusercontent.com/22606199/174967266-02d14c33-7cc7-448f-8e2b-6152fe79527c.png">
+  <img width="980" alt="스크린샷 2022-06-22 오후 4 07 04" src="https://user-images.githubusercontent.com/22606199/174967247-aca91a5e-7275-4c33-95de-e12f254f0c80.png">
 
+  
 >Note: 22.06.16 (**4-2)까지 완료**)   
+## 5. 채용상세페이지를 가져옵니다.
+  **Details 버튼 클릭 시 해당 회사의 모든 공고를 보여줍니다.**
+  <img width="980" alt="스크린샷 2022-06-22 오후 4 06 28" src="https://user-images.githubusercontent.com/22606199/174967846-c3e0124c-8b3c-4ccb-93f8-292410a6d4d4.png">
+  <img width="980" alt="스크린샷 2022-06-22 오후 4 06 44" src="https://user-images.githubusercontent.com/22606199/174967808-aabf274a-5bbe-46ba-9615-bb0d44e866c7.png">
+
+>Note: 22.06.22 (**5까지 완료**)   
+
+
+
